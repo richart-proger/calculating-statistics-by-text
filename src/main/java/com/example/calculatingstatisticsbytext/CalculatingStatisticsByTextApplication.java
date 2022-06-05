@@ -13,22 +13,17 @@ import java.io.InputStreamReader;
 import java.util.Map;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class CalculatingStatisticsByTextApplication implements CommandLineRunner {
+public class CalculatingStatisticsByTextApplication {
 
   private static final Logger log = LoggerFactory
       .getLogger(CalculatingStatisticsByTextApplication.class);
 
   public static void main(String[] args) {
     SpringApplication.run(CalculatingStatisticsByTextApplication.class, args);
-  }
-
-  @Override
-  public void run(String... args) {
     try (BufferedReader reader = new BufferedReader(new InputStreamReader(System.in))) {
       String fileName1 = fileNameReader("первого", reader);
       String fileName2 = fileNameReader("второго", reader);
