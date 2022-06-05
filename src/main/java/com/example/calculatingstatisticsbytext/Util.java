@@ -8,8 +8,12 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 class Util {
+
+  private static final Logger log = LoggerFactory.getLogger(Util.class);
 
   static String fileNameReader(String number, BufferedReader reader) {
     StringBuilder fileName = new StringBuilder();
@@ -19,7 +23,7 @@ class Util {
         System.out.print("Введите название " + number + " файла: ");
         fileName.append(reader.readLine());
       } catch (IOException e) {
-        e.printStackTrace();
+        log.info(e.getMessage());
       }
     }
     if (!fileName.toString().endsWith(".txt")) {
@@ -39,7 +43,8 @@ class Util {
         stringBuilder.append(scanner.nextLine()).append(" ");
       }
     } catch (FileNotFoundException e) {
-      e.printStackTrace();
+      log.info(e.getMessage());
+      System.err.println("Файл не найден, попробуйте еще раз");
     }
   }
 
@@ -90,7 +95,8 @@ class Util {
       }
       writer.flush();
     } catch (IOException e) {
-      e.printStackTrace();
+      log.debug(e.getMessage());
+      System.out.println("Не удается записать данные в файл");
     }
   }
 }

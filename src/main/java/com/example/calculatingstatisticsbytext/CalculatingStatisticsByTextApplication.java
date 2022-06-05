@@ -11,12 +11,17 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Map;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 public class CalculatingStatisticsByTextApplication implements CommandLineRunner {
+
+  private static final Logger log = LoggerFactory
+      .getLogger(CalculatingStatisticsByTextApplication.class);
 
   public static void main(String[] args) {
     SpringApplication.run(CalculatingStatisticsByTextApplication.class, args);
@@ -44,7 +49,7 @@ public class CalculatingStatisticsByTextApplication implements CommandLineRunner
       String outputFileName = getFilePath(fileName3);
       fileWriter(outputFileName, templates, resultMap);
     } catch (IOException e) {
-      e.printStackTrace();
+      log.info(e.getMessage());
     }
   }
 }
